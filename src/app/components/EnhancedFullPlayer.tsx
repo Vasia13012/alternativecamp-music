@@ -9,6 +9,7 @@ import {
   Shuffle,
   Heart,
   MoreVertical,
+  MoreHorizontal,
   ThumbsUp,
   ThumbsDown,
   FileText,
@@ -98,7 +99,7 @@ const formatTime = (time: number) => {
 >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(220,38,38,0.2),transparent_70%)]" />
 
-          <div className="relative h-screen flex flex-col px-8 pt-4 pb-5">
+          <div className="relative h-screen flex flex-col px-8 pt-4 pb-6">
         
  
             <motion.div
@@ -119,7 +120,7 @@ const formatTime = (time: number) => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="flex-shrink-0 mx-auto w-[82vw] max-w-[340px] mb-5"
+              className="flex-shrink-0 mx-auto w-[84vw] max-w-[360px] mb-5"
             >
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 blur-3xl" />
@@ -140,7 +141,7 @@ const formatTime = (time: number) => {
             <div className="space-y-4 flex-1 min-h-0">
               <div className="flex items-start justify-between px-2">
                 <div className="flex-1 min-w-0">
-                  <h1 className="text-[34px] leading-tight font-bold text-white mb-1 line-clamp-1">
+                  <h1 className="text-[30px] leading-tight font-bold text-white mb-1 line-clamp-1">
                     {track.title}
                   </h1>І
                   <p className="text-white/60 text-[22px] leading-tight line-clamp-1">
@@ -149,84 +150,62 @@ const formatTime = (time: number) => {
                 </div>
               </div>
 
-              <div className="flex gap-2 overflow-x-auto scrollbar-hide px-2 pb-2">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setIsLiked(!isLiked);
-                    if (!isLiked) setIsDisliked(false);
-                    haptic.medium();
-                  }}
-                  className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all ${
-                    isLiked
-                      ? 'bg-white/20 border-white/30 text-white'
-                      : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10'
-                  }`}
-                >
-                  <ThumbsUp className={`w-4 h-4 ${isLiked ? 'fill-white' : ''}`} />
-                  <span className="font-medium">{track.likes}</span>
-                </motion.button>
+              <div className="grid grid-cols-[1.25fr_0.8fr_1.35fr_0.75fr] gap-3 px-0">
+  <motion.button
+    whileTap={{ scale: 0.96 }}
+    onClick={() => {
+      setIsLiked(!isLiked);
+      if (!isLiked) setIsDisliked(false);
+      haptic.medium();
+    }}
+    className={`h-14 flex items-center justify-center gap-2 rounded-full border transition-all ${
+      isLiked
+        ? 'bg-white/20 border-white/30 text-white'
+        : 'bg-white/10 border-white/15 text-white/80'
+    }`}
+  >
+    <ThumbsUp className={`w-5 h-5 ${isLiked ? 'fill-white' : ''}`} />
+    <span className="font-semibold text-lg">{track.likes}</span>
+  </motion.button>
 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setIsDisliked(!isDisliked);
-                    if (!isDisliked) setIsLiked(false);
-                    haptic.medium();
-                  }}
-                  className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all ${
-                    isDisliked
-                      ? 'bg-white/20 border-white/30 text-white'
-                      : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10'
-                  }`}
-                >
-                  <ThumbsDown className={`w-4 h-4 ${isDisliked ? 'fill-white' : ''}`} />
-                </motion.button>
+  <motion.button
+    whileTap={{ scale: 0.96 }}
+    onClick={() => {
+      setIsDisliked(!isDisliked);
+      if (!isDisliked) setIsLiked(false);
+      haptic.medium();
+    }}
+    className={`h-14 flex items-center justify-center rounded-full border transition-all ${
+      isDisliked
+        ? 'bg-white/20 border-white/30 text-white'
+        : 'bg-white/10 border-white/15 text-white/80'
+    }`}
+  >
+    <ThumbsDown className={`w-5 h-5 ${isDisliked ? 'fill-white' : ''}`} />
+  </motion.button>
 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setShowLyrics(true);
-                    haptic.medium();
-                  }}
-                  className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-red-600/20 to-orange-600/20 border border-red-500/30 text-white shadow-lg shadow-red-500/20 hover:from-red-600/30 hover:to-orange-600/30 transition-all"
-                >
-                  <FileText className="w-4 h-4" />
-                  <span className="font-medium">Lyrics</span>
-                </motion.button>
+  <motion.button
+    whileTap={{ scale: 0.96 }}
+    onClick={() => {
+      setShowLyrics(true);
+      haptic.medium();
+    }}
+    className="h-14 flex items-center justify-center gap-2 rounded-full bg-red-900/35 border border-red-500/35 text-white shadow-lg shadow-red-500/15"
+  >
+    <FileText className="w-5 h-5" />
+    <span className="font-semibold text-lg">Lyrics</span>
+  </motion.button>
 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setIsSaved(!isSaved);
-                    haptic.medium();
-                  }}
-                  className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all ${
-                    isSaved
-                      ? 'bg-white/20 border-white/30 text-white'
-                      : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10'
-                  }`}
-                >
-                  <Plus className={`w-4 h-4 ${isSaved ? 'rotate-45' : ''} transition-transform`} />
-                  <span className="font-medium">Save</span>
-                </motion.button>
+  <motion.button
+    whileTap={{ scale: 0.96 }}
+    onClick={() => haptic.light()}
+    className="h-14 flex items-center justify-center rounded-full bg-white/10 border border-white/15 text-white/80"
+  >
+    <MoreHorizontal className="w-6 h-6" />
+  </motion.button>
+</div>
 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => haptic.medium()}
-                  className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 transition-all"
-                >
-                  <Download className="w-4 h-4" />
-                  <span className="font-medium">Download</span>
-                </motion.button>
-              </div>
-
-              <div className="space-y-2 px-2">
+              <div className="space-y-2 px-0 mt-1">
                 <div className="relative w-full h-1 bg-white/20 rounded-full overflow-hidden">
                   <motion.div
                     className="absolute left-0 top-0 h-full bg-white"
@@ -282,7 +261,7 @@ const formatTime = (time: number) => {
   onTogglePlay();
   haptic.heavy();
 }}
-                  className="w-16 h-16 rounded-full bg-white shadow-2xl shadow-white/30 flex items-center justify-center"
+                  className="w-[74px] h-[74px] rounded-full bg-white shadow-2xl shadow-white/30 flex items-center justify-center"
                 >
                   <AnimatePresence mode="popLayout" initial={false}>
                     {isPlaying ? (
