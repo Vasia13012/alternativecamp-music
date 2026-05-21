@@ -99,7 +99,7 @@ const formatTime = (time: number) => {
 >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(220,38,38,0.2),transparent_70%)]" />
 
-          <div className="relative h-screen flex flex-col px-8 pt-4 pb-6">
+          <div className="relative h-screen flex flex-col px-8 pt-3 pb-4">
         
  
             <motion.div
@@ -120,7 +120,7 @@ const formatTime = (time: number) => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="flex-shrink-0 mx-auto w-[84vw] max-w-[360px] mb-5"
+              className="flex-shrink-0 mx-auto w-[78vw] max-w-[315px] mb-4"
             >
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 blur-3xl" />
@@ -138,13 +138,13 @@ const formatTime = (time: number) => {
               </div>
             </motion.div>
 
-            <div className="space-y-4 flex-1 min-h-0">
+            <div className="space-y-3 flex-1 min-h-0">
               <div className="flex items-start justify-between px-2">
                 <div className="flex-1 min-w-0">
-                  <h1 className="text-[30px] leading-tight font-bold text-white mb-1 line-clamp-1">
+                  <h1 className="text-[26px] leading-tight font-bold text-white mb-1 line-clamp-1">
                     {track.title}
                   </h1>І
-                  <p className="text-white/60 text-[22px] leading-tight line-clamp-1">
+                  <p className="text-white/60 text-[17px] leading-tight line-clamp-1">
                     {track.artist}
                   </p>
                 </div>
@@ -158,14 +158,14 @@ const formatTime = (time: number) => {
       if (!isLiked) setIsDisliked(false);
       haptic.medium();
     }}
-    className={`h-14 flex items-center justify-center gap-2 rounded-full border transition-all ${
+    className={`h-12 flex items-center justify-center gap-2 rounded-full border transition-all ${
       isLiked
         ? 'bg-white/20 border-white/30 text-white'
         : 'bg-white/10 border-white/15 text-white/80'
     }`}
   >
     <ThumbsUp className={`w-5 h-5 ${isLiked ? 'fill-white' : ''}`} />
-    <span className="font-semibold text-lg">{track.likes}</span>
+    <span className="font-semibold text-base">{track.likes}</span>
   </motion.button>
 
   <motion.button
@@ -175,7 +175,7 @@ const formatTime = (time: number) => {
       if (!isDisliked) setIsLiked(false);
       haptic.medium();
     }}
-    className={`h-14 flex items-center justify-center rounded-full border transition-all ${
+    className={`h-12 flex items-center justify-center rounded-full border transition-all ${
       isDisliked
         ? 'bg-white/20 border-white/30 text-white'
         : 'bg-white/10 border-white/15 text-white/80'
@@ -190,16 +190,16 @@ const formatTime = (time: number) => {
       setShowLyrics(true);
       haptic.medium();
     }}
-    className="h-14 flex items-center justify-center gap-2 rounded-full bg-red-900/35 border border-red-500/35 text-white shadow-lg shadow-red-500/15"
+    className="h-12 flex items-center justify-center gap-2 rounded-full bg-red-900/35 border border-red-500/35 text-white shadow-lg shadow-red-500/15"
   >
     <FileText className="w-5 h-5" />
-    <span className="font-semibold text-lg">Lyrics</span>
+    <span className="font-semibold text-base">Lyrics</span>
   </motion.button>
 
   <motion.button
     whileTap={{ scale: 0.96 }}
     onClick={() => haptic.light()}
-    className="h-14 flex items-center justify-center rounded-full bg-white/10 border border-white/15 text-white/80"
+    className="h-12 flex items-center justify-center rounded-full bg-white/10 border border-white/15 text-white/80"
   >
     <MoreHorizontal className="w-6 h-6" />
   </motion.button>
@@ -261,7 +261,7 @@ const formatTime = (time: number) => {
   onTogglePlay();
   haptic.heavy();
 }}
-                  className="w-[74px] h-[74px] rounded-full bg-white shadow-2xl shadow-white/30 flex items-center justify-center"
+                  className="w-16 h-16 rounded-full bg-white shadow-2xl shadow-white/30 flex items-center justify-center"
                 >
                   <AnimatePresence mode="popLayout" initial={false}>
                     {isPlaying ? (
