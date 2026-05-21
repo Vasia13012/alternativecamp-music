@@ -41,10 +41,10 @@ export function PlayerSheet({
   const fullPlayerOpacity = useTransform(dragY, [-180, 0], [1, 0]);
 
   const openFullPlayer = () => {
-    dragY.set(-320);
-    setIsDraggingOpen(false);
-    setIsPlayerExpanded(true);
-  };
+  dragY.set(0);
+  setIsDraggingOpen(false);
+  setIsPlayerExpanded(true);
+};
 
   const closeFullPlayer = () => {
     dragY.set(0);
