@@ -119,7 +119,7 @@ const formatTime = (time: number) => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="flex-shrink-0 mx-auto w-full max-w-sm mb-5"
+              className="flex-shrink-0 mx-auto w-[78vw] max-w-[320px] mb-4"
             >
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 blur-3xl" />
@@ -131,7 +131,7 @@ const formatTime = (time: number) => {
                   <ImageWithFallback
                     src={track.cover}
                     alt={track.title}
-                    className="w-full h-full object-cover"
+                    className="w-full aspect-square max-h-[42vh] rounded-[32px] overflow-hidden"
                   />
                 </motion.div>
               </div>
