@@ -22,8 +22,6 @@ import { useTelegram } from '../hooks/useTelegram';
 import { LyricsSheet } from './LyricsSheet';
 
 interface EnhancedFullPlayerProps {
-  onSheetDrag?: (offsetY: number) => void;
-  onSheetDragEnd?: (offsetY: number) => void;
   isOpen: boolean;
   onClose: () => void;
   isPlaying: boolean;
@@ -63,8 +61,6 @@ export function EnhancedFullPlayer({
   onSeek,
   onNext,
   onPrevious,
-  onSheetDrag,
- onSheetDragEnd,
   track = {
     title: 'stay',
     artist: 'all things break',

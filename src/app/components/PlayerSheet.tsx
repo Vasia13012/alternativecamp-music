@@ -106,16 +106,26 @@ export function PlayerSheet({
       )}
 
       <motion.div
-  className="fixed inset-0 z-[90] pointer-events-none"
-  drag={false}
-  dragConstraints={{ top: 0, bottom: SHEET_HEIGHT }}
-  dragElastic={0.03}
+  className="fixed inset-0 z-[90] pointer-events-auto"
+  drag={isPlayerExpanded ? "y" : false}
+  dragConstraints={{ top: 0, bottom: 9999 }}
+  dragElastic={0.08}
   dragMomentum={false}
-  onDragEnd={(event, info) => {
+  onDrag={(event, info) => {
+  if (info.offset.y < 0) return;
+
+  dragY.set(info.offset.y);
+}}
+
+onDragEnd={(event, info) => {
   if (info.offset.y > SNAP_POINT) {
     closeFullPlayer();
   } else {
-    openFullPlayer();
+    animate(dragY, 0, {
+      type: 'spring',
+      stiffness: 420,
+      damping: 38,
+    });
   }
 }}
   style={{
@@ -124,19 +134,7 @@ export function PlayerSheet({
 }}
 >
         <EnhancedFullPlayer
-        onSheetDrag={(offsetY) => {
-  if (offsetY < 0) return;
-
-  dragY.set(Math.min(offsetY, SHEET_HEIGHT));
-}}
-
-onSheetDragEnd={(offsetY) => {
-  if (offsetY > SNAP_POINT) {
-    closeFullPlayer();
-  } else {
-    openFullPlayer();
-  }
-}}
+       
           isOpen={isPlayerExpanded || isDraggingOpen}
           onClose={closeFullPlayer}
           isPlaying={isPlaying}
