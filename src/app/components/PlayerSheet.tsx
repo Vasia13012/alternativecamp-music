@@ -106,8 +106,8 @@ export function PlayerSheet({
       )}
 
       <motion.div
-  className="fixed inset-0 z-[90] pointer-events-auto touch-none"
-  drag={isPlayerExpanded ? "y" : false}
+  className="fixed inset-0 z-[90] pointer-events-none"
+  drag={false}
   dragConstraints={{ top: 0, bottom: SHEET_HEIGHT }}
   dragElastic={0.03}
   dragMomentum={false}
