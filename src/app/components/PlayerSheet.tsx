@@ -87,13 +87,21 @@ export function PlayerSheet({
             }
           }}
           onDragFinish={(offsetY) => {
-            if (offsetY < -90) {
-              openFullPlayer();
-            } else {
-              setIsDraggingOpen(false);
-              dragY.set(0);
-            }
-          }}
+  if (offsetY < -90) {
+    openFullPlayer();
+    return;
+  }
+
+  if (offsetY > 80) {
+    onCloseMini();
+    dragY.set(0);
+    setIsDraggingOpen(false);
+    return;
+  }
+
+  dragY.set(0);
+  setIsDraggingOpen(false);
+}}
         />
       )}
 
