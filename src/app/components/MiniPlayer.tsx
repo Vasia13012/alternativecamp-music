@@ -71,15 +71,6 @@ onDrag={(event, info) => {
 
 onDragEnd={(event, info) => {
   onDragFinish?.(info.offset.y);
-
-  if (info.offset.y < -80) {
-    onExpand?.();
-    haptic.medium();
-  }
-
-  if (info.offset.y > 80) {
-    closeWithAnimation();
-  }
 }}
 
   whileHover={{ scale: 1.02 }}

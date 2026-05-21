@@ -102,19 +102,10 @@ const formatTime = (time: number) => {
           <div className="relative h-screen flex flex-col px-8 pt-3 pb-4">
         
  
-            <motion.div
-  className="h-8 flex items-center justify-center mb-4 touch-none"
-  onPan={(event, info) => {
-    if (info.offset.y > 0) {
-      onSheetDrag?.(info.offset.y);
-    }
-  }}
-  onPanEnd={(event, info) => {
-    onSheetDragEnd?.(info.offset.y);
-  }}
->
+            
+  <div className="h-8 flex items-center justify-center mb-4">
   <div className="w-12 h-1.5 rounded-full bg-white/30" />
-</motion.div>
+</div>
 
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
