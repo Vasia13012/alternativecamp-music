@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, useMotionValue, useTransform } from 'motion/react';
+import { motion, useMotionValue, useTransform, animate } from 'motion/react';
 import { MiniPlayer } from './MiniPlayer';
 import { EnhancedFullPlayer } from './EnhancedFullPlayer';
 
@@ -36,13 +36,20 @@ export function PlayerSheet({
 }: PlayerSheetProps) {
   const [isDraggingOpen, setIsDraggingOpen] = useState(false);
   const dragY = useMotionValue(0);
+  const SHEET_HEIGHT = window.innerHeight;
+  const SNAP_POINT = SHEET_HEIGHT * 0.5;
 
   const fullPlayerY = useTransform(dragY, [-320, 0], [0, 900]);
   const fullPlayerOpacity = useTransform(dragY, [-180, 0], [1, 0]);
 
   const openFullPlayer = () => {
   setIsPlayerExpanded(true);
-  dragY.set(0);
+
+  animate(dragY, 0, {
+    type: 'spring',
+    stiffness: 420,
+    damping: 36,
+  });
 
   setTimeout(() => {
     setIsDraggingOpen(false);
@@ -50,10 +57,18 @@ export function PlayerSheet({
 };
 
   const closeFullPlayer = () => {
+  animate(dragY, SHEET_HEIGHT, {
+    type: 'spring',
+    stiffness: 420,
+    damping: 38,
+  });
+
+  setTimeout(() => {
     dragY.set(0);
     setIsDraggingOpen(false);
     setIsPlayerExpanded(false);
-  };
+  }, 220);
+};
 
   return (
     <>
@@ -100,14 +115,16 @@ export function PlayerSheet({
 >
         <EnhancedFullPlayer
         onSheetDrag={(offsetY) => {
-  dragY.set(offsetY);
+  if (offsetY < 0) return;
+
+  dragY.set(Math.min(offsetY, SHEET_HEIGHT));
 }}
 
 onSheetDragEnd={(offsetY) => {
-  if (offsetY > 120) {
+  if (offsetY > SNAP_POINT) {
     closeFullPlayer();
   } else {
-    dragY.set(0);
+    openFullPlayer();
   }
 }}
           isOpen={isPlayerExpanded || isDraggingOpen}
