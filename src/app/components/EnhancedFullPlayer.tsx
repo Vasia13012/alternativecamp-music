@@ -98,7 +98,7 @@ const formatTime = (time: number) => {
 >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(220,38,38,0.2),transparent_70%)]" />
 
-          <div className="relative h-screen flex flex-col px-6 pt-6 pb-6">
+          <div className="relative h-screen flex flex-col px-8 pt-4 pb-5">
         
  
             <motion.div
@@ -119,7 +119,7 @@ const formatTime = (time: number) => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="flex-shrink-0 mx-auto w-[78vw] max-w-[320px] mb-4"
+              className="flex-shrink-0 mx-auto w-[82vw] max-w-[340px] mb-5"
             >
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 blur-3xl" />
@@ -137,13 +137,13 @@ const formatTime = (time: number) => {
               </div>
             </motion.div>
 
-            <div className="space-y-5 flex-1 min-h-0">
+            <div className="space-y-4 flex-1 min-h-0">
               <div className="flex items-start justify-between px-2">
                 <div className="flex-1 min-w-0">
-                  <h1 className="text-4xl font-bold text-white mb-1 line-clamp-1">
+                  <h1 className="text-[34px] leading-tight font-bold text-white mb-1 line-clamp-1">
                     {track.title}
                   </h1>І
-                  <p className="text-white/60 text-lg line-clamp-1">
+                  <p className="text-white/60 text-[22px] leading-tight line-clamp-1">
                     {track.artist}
                   </p>
                 </div>
@@ -158,13 +158,13 @@ const formatTime = (time: number) => {
                     if (!isLiked) setIsDisliked(false);
                     haptic.medium();
                   }}
-                  className={`flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-full border transition-all ${
+                  className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all ${
                     isLiked
                       ? 'bg-white/20 border-white/30 text-white'
                       : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10'
                   }`}
                 >
-                  <ThumbsUp className={`w-5 h-5 ${isLiked ? 'fill-white' : ''}`} />
+                  <ThumbsUp className={`w-4 h-4 ${isLiked ? 'fill-white' : ''}`} />
                   <span className="font-medium">{track.likes}</span>
                 </motion.button>
 
@@ -176,13 +176,13 @@ const formatTime = (time: number) => {
                     if (!isDisliked) setIsLiked(false);
                     haptic.medium();
                   }}
-                  className={`flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-full border transition-all ${
+                  className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all ${
                     isDisliked
                       ? 'bg-white/20 border-white/30 text-white'
                       : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10'
                   }`}
                 >
-                  <ThumbsDown className={`w-5 h-5 ${isDisliked ? 'fill-white' : ''}`} />
+                  <ThumbsDown className={`w-4 h-4 ${isDisliked ? 'fill-white' : ''}`} />
                 </motion.button>
 
                 <motion.button
@@ -192,9 +192,9 @@ const formatTime = (time: number) => {
                     setShowLyrics(true);
                     haptic.medium();
                   }}
-                  className="flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-red-600/20 to-orange-600/20 border border-red-500/30 text-white shadow-lg shadow-red-500/20 hover:from-red-600/30 hover:to-orange-600/30 transition-all"
+                  className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-red-600/20 to-orange-600/20 border border-red-500/30 text-white shadow-lg shadow-red-500/20 hover:from-red-600/30 hover:to-orange-600/30 transition-all"
                 >
-                  <FileText className="w-5 h-5" />
+                  <FileText className="w-4 h-4" />
                   <span className="font-medium">Lyrics</span>
                 </motion.button>
 
@@ -205,13 +205,13 @@ const formatTime = (time: number) => {
                     setIsSaved(!isSaved);
                     haptic.medium();
                   }}
-                  className={`flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-full border transition-all ${
+                  className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all ${
                     isSaved
                       ? 'bg-white/20 border-white/30 text-white'
                       : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10'
                   }`}
                 >
-                  <Plus className={`w-5 h-5 ${isSaved ? 'rotate-45' : ''} transition-transform`} />
+                  <Plus className={`w-4 h-4 ${isSaved ? 'rotate-45' : ''} transition-transform`} />
                   <span className="font-medium">Save</span>
                 </motion.button>
 
@@ -219,9 +219,9 @@ const formatTime = (time: number) => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => haptic.medium()}
-                  className="flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 transition-all"
+                  className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 transition-all"
                 >
-                  <Download className="w-5 h-5" />
+                  <Download className="w-4 h-4" />
                   <span className="font-medium">Download</span>
                 </motion.button>
               </div>
@@ -272,7 +272,7 @@ const formatTime = (time: number) => {
 }}
                   className="text-white p-2"
                 >
-                  <SkipBack className="w-8 h-8" fill="white" />
+                  <SkipBack className="w-7 h-7" fill="white" />
                 </motion.button>
 
                 <motion.button
@@ -282,26 +282,28 @@ const formatTime = (time: number) => {
   onTogglePlay();
   haptic.heavy();
 }}
-                  className="w-20 h-20 rounded-full bg-white shadow-2xl shadow-white/30 flex items-center justify-center"
+                  className="w-16 h-16 rounded-full bg-white shadow-2xl shadow-white/30 flex items-center justify-center"
                 >
-                  <AnimatePresence mode="wait">
+                  <AnimatePresence mode="popLayout" initial={false}>
                     {isPlaying ? (
                       <motion.div
-                        key="pause"
-                        initial={{ scale: 0, rotate: -90 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        exit={{ scale: 0, rotate: 90 }}
-                      >
-                        <Pause className="w-9 h-9 text-black" fill="black" />
+  key="pause"
+  initial={{ opacity: 0, scale: 0.85 }}
+  animate={{ opacity: 1, scale: 1 }}
+  exit={{ opacity: 0, scale: 0.85 }}
+  transition={{ duration: 0.1, ease: 'easeOut' }}
+>
+                        <Pause className="w-7 h-7 text-black" fill="black" />
                       </motion.div>
                     ) : (
                       <motion.div
-                        key="play"
-                        initial={{ scale: 0, rotate: -90 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        exit={{ scale: 0, rotate: 90 }}
-                      >
-                        <Play className="w-9 h-9 text-black ml-1" fill="black" />
+  key="play"
+  initial={{ opacity: 0, scale: 0.85 }}
+  animate={{ opacity: 1, scale: 1 }}
+  exit={{ opacity: 0, scale: 0.85 }}
+  transition={{ duration: 0.1, ease: 'easeOut' }}
+>
+                        <Play className="w-7 h-7 text-black ml-1" fill="black" />
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -316,7 +318,7 @@ const formatTime = (time: number) => {
 }}
                   className="text-white p-2"
                 >
-                  <SkipForward className="w-8 h-8" fill="white" />
+                  <SkipForward className="w-7 h-7" fill="white" />
                 </motion.button>
 
                 <motion.button
