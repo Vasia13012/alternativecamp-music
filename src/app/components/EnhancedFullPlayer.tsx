@@ -94,11 +94,11 @@ const formatTime = (time: number) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-  className="fixed inset-0 z-[100] bg-gradient-to-br from-black via-zinc-900 to-black overflow-y-auto overscroll-none pb-safe pointer-events-auto"
+  className="fixed inset-0 z-[100] bg-gradient-to-br from-black via-zinc-900 to-black overflow-hidden overscroll-none pointer-events-auto"
 >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(220,38,38,0.2),transparent_70%)]" />
 
-          <div className="relative min-h-screen flex flex-col p-4 pt-8">
+          <div className="relative h-screen flex flex-col px-6 pt-6 pb-6">
         
  
             <motion.div
@@ -119,7 +119,7 @@ const formatTime = (time: number) => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="flex-shrink-0 mx-auto w-full max-w-md mb-8"
+              className="flex-shrink-0 mx-auto w-full max-w-sm mb-5"
             >
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 blur-3xl" />
@@ -137,12 +137,12 @@ const formatTime = (time: number) => {
               </div>
             </motion.div>
 
-            <div className="space-y-6 flex-1">
+            <div className="space-y-5 flex-1 min-h-0">
               <div className="flex items-start justify-between px-2">
                 <div className="flex-1 min-w-0">
-                  <h1 className="text-3xl font-bold text-white mb-1 line-clamp-2">
+                  <h1 className="text-4xl font-bold text-white mb-1 line-clamp-1">
                     {track.title}
-                  </h1>
+                  </h1>І
                   <p className="text-white/60 text-lg line-clamp-1">
                     {track.artist}
                   </p>
